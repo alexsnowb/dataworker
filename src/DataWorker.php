@@ -97,13 +97,13 @@ class DataWorker
         // output headers so that the file is downloaded rather than displayed
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=data.csv');
+
         $out = fopen('php://output', 'w');
 
         foreach ($this->output as $row) {
             fputcsv($out, $row);
         }
         fclose($out);
-
     }
 
 

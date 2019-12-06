@@ -4,3 +4,6 @@
 
 
 /public/uploads
+/vendor/
+/composer.lock
+vendor/

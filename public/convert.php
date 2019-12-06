@@ -13,5 +13,4 @@ if($dataWorker->isPost()) {
     $dataWorker->uploadFile();
     $dataWorker->convertFile();
     $dataWorker->outputData();
-    return true;
 }
