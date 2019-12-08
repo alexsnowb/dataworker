@@ -17,17 +17,17 @@
 </header>
 
 <div class="container border"  style="margin-top:30px">
-        <h3>DDD</h3>
+        <h3>Example</h3>
 
-        <p>Our example forms show native textual <code class="highlighter-rouge">&lt;input&gt;</code>s above, but form validation styles are available for our custom form controls, too.</p>
+        <p>Our example convert file to the specified format.</p>
 
         <div class="bd-example">
-            <form class="was-validated" action="convert.php" method="post" enctype="multipart/form-data">
+            <form class="was-validated" action="convert.php" method="post" enctype="multipart/form-data" target="_blank">
                 <div class="form-group">
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="validatedCustomFile" name="file" required>
+                        <input type="file" id="validatedCustomFile" name="file" required class="custom-file-label">
                         <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
-                        <div class="invalid-feedback">Example invalid custom file feedback</div>
+                        <div class="invalid-feedback">Upload csv file in format "119736,FL,CLAY COUNTY,.....,30.102261,-81.711777,Residential,Masonry,1"</div>
                     </div>
                 </div>
 

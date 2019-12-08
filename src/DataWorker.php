@@ -14,7 +14,9 @@ class DataWorker
 {
 
     /** @var string  */
-    public $uploadDir;
+    private $uploadDir;
+    /** @var string */
+    private $downloadDir;
     /** @var File */
     private $uploadedFile;
     /**
@@ -26,11 +28,14 @@ class DataWorker
      * DataWorker constructor.
      * @param string $uploadDir
      */
-    public function __construct($uploadDir)
+    public function __construct($uploadDir, $downloadDir)
     {
         if (empty($uploadDir))
             throw new \InvalidArgumentException('Upload directory not configured');
+        if (empty($uploadDir))
+            throw new \InvalidArgumentException('Download directory not configured');
         $this->uploadDir = $uploadDir;
+        $this->downloadDir = $downloadDir;
     }
 
     /**
@@ -38,7 +43,7 @@ class DataWorker
      */
     public function isPost()
     {
-        if (!empty($_POST)) return true;
+        if (!empty($_POST) || !empty($_FILES)) return true;
 
         return false;
     }
@@ -98,12 +103,13 @@ class DataWorker
         header('Content-Type: text/csv; charset=utf-8');
         header('Content-Disposition: attachment; filename=data.csv');
 
-        $out = fopen('php://output', 'w');
+        $file = fopen($this->downloadDir . DIRECTORY_SEPARATOR .$this->uploadedFile->getNameWithExtension(), 'w');
+
 
         foreach ($this->output as $row) {
-            fputcsv($out, $row);
+            fputcsv($file, $row);
         }
-        fclose($out);
+        fclose($file);
     }
 
 
